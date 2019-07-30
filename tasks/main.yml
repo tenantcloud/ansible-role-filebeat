@@ -1,0 +1,21 @@
+---
+  - name: Add Elastic GPG Key
+    apt_key:
+      url: https://artifacts.elastic.co/GPG-KEY-elasticsearch
+      state: present
+  - name: Add Elastic repository    
+    apt_repository:
+      repo: deb https://artifacts.elastic.co/packages/6.x/apt stable main
+      state: present
+      update_cache: yes
+  - name: Install Filebeat
+    apt:
+      name: filebeat
+  - name: Add confiration files
+    copy:
+      src: 'files/etc/'
+      dest: '/etc/'
+  - name: Restart filebeat
+    service:
+      name: filebeat
+      state: restarted
