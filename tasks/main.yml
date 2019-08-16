@@ -20,7 +20,6 @@
       path: '/etc/filebeat/ssl'
       state: directory
       mode: 0755
-    become: yes
   - name: Add certificate
     copy:
       src: '{{ crt_file_src }}'
