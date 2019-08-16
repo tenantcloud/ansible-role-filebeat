@@ -23,8 +23,8 @@
     become: yes
   - name: Add certificate
     copy:
-      src: '{{ crt_source }}'
-      dest: '{{ crt_file }}'
+      src: '{{ crt_file_src }}'
+      dest: '/etc/filebeat/ssl/logstash.crt'
   - name: Restart filebeat
     service:
       name: filebeat

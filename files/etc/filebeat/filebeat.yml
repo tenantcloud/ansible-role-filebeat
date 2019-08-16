@@ -117,7 +117,7 @@ output.logstash:
 
   # Optional SSL. By default is off.
   # List of root certificates for HTTPS server verifications
-  ssl.certificate_authorities: ["{{ crt_file }}"]
+  ssl.certificate_authorities: ["/etc/filebeat/ssl/logstash.crt"]
 
   # Certificate for SSL client authentication
   #ssl.certificate: "/etc/pki/client/cert.pem"
