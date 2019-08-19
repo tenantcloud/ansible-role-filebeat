@@ -15,6 +15,10 @@
     copy:
       src: 'files/etc/'
       dest: '/etc/'
+  - name: Add confiration files
+    template:
+      src: 'files/etc/filebeat/filebeat.yml'
+      dest: '/etc/filebeat/filebeat.yml'
   - name: Create crt directory
     file:
       path: '/etc/filebeat/ssl'
