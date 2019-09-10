@@ -16,3 +16,21 @@ Add this role name to playbook and run:
 -------
 
 Or in avaliable playbook add to hosts file new client IP address or hostname and run playbook.
+
+-------
+
+Variable included in this role:
+
+{{ crt_file_src }} - name of generated certificate
+
+-------
+
+Sample playbook-name.yml
+
+- hosts: localhost
+  vars:
+    crt_file_src: logstash.crt
+  become: yes
+  roles:
+    - ansible-role-filebeat
+
