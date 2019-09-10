@@ -1,36 +1,39 @@
-Ansible role for setup filebeat on elk clients.
+tenantcloud.ansible_role_filebeat
 =========
 
-Filebeat setup role on elk clients. This role include in default terraform scenario for auto-deploy new server.
+Ansible role for install and setup filebeat. This role include in default terraform scenario for auto-deploy new server.
 
+Requirements
+------------
+
+Certificate from tenantcloud.ansible_role_auth_elk role must be generated and upload on S3 bucket.
+
+Role Variables
+--------------
+
+crt_file_src: logstash.crt
+Name generated certificate
+
+Dependencies
+------------
+
+
+Example Playbook
+----------------
+
+  - hosts: localhost
+    vars:
+      crt_file_src: logstash.crt
+    become: yes
+    roles:
+      - tenantcloud.ansible_role_filebeat
+
+License
 -------
 
-For manual installation this role on new client need install galaxy and run playbook:
+BSD
 
-```ansible-galaxy install tenantcloud.ansible_role_filebeat```
+Author Information
+------------------
 
-Add this role name to playbook and run:
-
-```cd /tmp/.ansible/ && ansible-playbook playbook-name.yml```
-
--------
-
-Or in avaliable playbook add to hosts file new client IP address or hostname and run playbook.
-
--------
-
-Variable included in this role:
-
-{{ crt_file_src }} - name of generated certificate
-
--------
-
-Sample playbook-name.yml
-
-- hosts: localhost
-  vars:
-    crt_file_src: logstash.crt
-  become: yes
-  roles:
-    - ansible-role-filebeat
-
+TenantCloud DevOps Team
