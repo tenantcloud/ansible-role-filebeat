@@ -21,12 +21,14 @@ Dependencies
 Example Playbook
 ----------------
 
+```yaml
   - hosts: localhost
     vars:
       crt_file_src: logstash.crt
     become: yes
     roles:
       - tenantcloud.ansible_role_filebeat
+```
 
 License
 -------
