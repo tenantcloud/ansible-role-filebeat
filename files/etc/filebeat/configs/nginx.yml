@@ -13,3 +13,11 @@
   fields:
     type: nginx_error
   fields_under_root: true
+
+- type: log
+  enabled: true
+  paths:
+    - /var/log/nginx/*data.log
+  fields:
+    type: nginx_access_full
+  fields_under_root: true
