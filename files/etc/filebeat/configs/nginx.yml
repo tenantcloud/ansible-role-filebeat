@@ -17,7 +17,7 @@
 - type: log
   enabled: true
   paths:
-    - /var/log/nginx/*data.log
+    - /var/log/nginx/*-access-full.log
   fields:
     type: full_nginx_access
   fields_under_root: true
