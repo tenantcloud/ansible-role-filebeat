@@ -19,5 +19,5 @@
   paths:
     - /var/log/nginx/*data.log
   fields:
-    type: nginx_access_full
+    type: full_nginx_access
   fields_under_root: true
