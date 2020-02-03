@@ -5,7 +5,7 @@
       state: present
   - name: Add Elastic repository
     apt_repository:
-      repo: deb https://artifacts.elastic.co/packages/6.x/apt stable main
+      repo: "deb https://artifacts.elastic.co/packages/{{ elasticsearch_version }}/apt stable main"
       state: present
       update_cache: yes
   - name: Install Filebeat
