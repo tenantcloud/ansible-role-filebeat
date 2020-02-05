@@ -11,6 +11,7 @@
 - name: Install Filebeat
   apt:
     name: filebeat
+    state: latest
 - name: Create filebeat configs directory
   file:
     path: '/etc/filebeat/configs'
