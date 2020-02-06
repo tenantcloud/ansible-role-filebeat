@@ -46,4 +46,4 @@
 - name: Restart filebeat
   service:
     name: filebeat
-    state: reastarted
+    state: restarted
