@@ -8,6 +8,10 @@
     repo: "{{ elasic_repo }}/{{ elasticsearch_version }}/apt stable main"
     state: present
     update_cache: true
+- name: Stop filebeat
+  service:
+    name: filebeat
+    state: stoped
 - name: Install Filebeat
   apt:
     name: filebeat
@@ -24,7 +28,7 @@
   template:
     src: 'etc/filebeat/configs/{{ item }}.tpl'
     dest: '/etc/filebeat/configs/{{ item }}'
-  with_items:
+  loop:
     - laravel.yml
     - nginx.yml
     - socket.yml
@@ -42,4 +46,4 @@
 - name: Restart filebeat
   service:
     name: filebeat
-    state: restarted
+    state: reastarted
