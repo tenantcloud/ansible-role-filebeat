@@ -3,7 +3,7 @@
   apt_key:
     url: https://artifacts.elastic.co/GPG-KEY-elasticsearch
     state: present
-- name: Add Elastic repository
+- name: Add Elastic {{ elasticsearch_version }} repository
   apt_repository:
     repo: "{{ elasic_repo }}/{{ elasticsearch_version }}/apt stable main"
     state: present
@@ -16,6 +16,8 @@
   apt:
     name: filebeat
     state: {{ beat_version }}
+  notify:
+    - Stop filebeat
 - name: Create filebeat configs directory
   file:
     path: '/etc/filebeat/configs'
@@ -44,8 +46,6 @@
   copy:
     src: '{{ crt_file_src }}'
     dest: '/etc/filebeat/ssl/logstash.crt'
-- name: Restart filebeat
-  service:
-    name: filebeat
-    state: restarted
+  notify:
+    - Restart filebeat
 
