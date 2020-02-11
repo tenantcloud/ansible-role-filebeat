@@ -3,15 +3,18 @@
   apt_key:
     url: https://artifacts.elastic.co/GPG-KEY-elasticsearch
     state: present
+
 - name: Add Elastic {{ elasticsearch_version }} repository
   apt_repository:
     repo: "{{ elasic_repo }}/{{ elasticsearch_version }}/apt stable main"
     state: present
     update_cache: true
+
 - name: Stop filebeat
   service:
     name: filebeat
     state: stoped
+
 - name: Install Filebeat
   apt:
     name: filebeat
@@ -19,15 +22,18 @@
     enabled: true
   notify:
     - Stop filebeat
+
 - name: Create filebeat configs directory
   file:
     path: '/etc/filebeat/configs'
     state: directory
     mode: 0755
+
 - name: Add filebeat configuration file
   template:
     src: 'etc/filebeat/filebeat.yml.tpl'
     dest: '/etc/filebeat/filebeat.yml'
+
 - name: Add configuration files
   template:
     src: 'etc/filebeat/configs/{{ item }}.tpl'
@@ -38,15 +44,16 @@
     - socket.yml
     - syslog.yml
     - horizon.yml
+
 - name: Create crt directory
   file:
     path: '/etc/filebeat/ssl'
     state: directory
     mode: 0755
+
 - name: Add certificate
   copy:
     src: '{{ crt_file_src }}'
     dest: '/etc/filebeat/ssl/logstash.crt'
   notify:
     - Restart filebeat
-
