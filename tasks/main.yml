@@ -15,7 +15,8 @@
 - name: Install Filebeat
   apt:
     name: filebeat
-    state: {{ beat_version }}
+    state: "{{ beat_version }}"
+    enabled: true
   notify:
     - Stop filebeat
 - name: Create filebeat configs directory
