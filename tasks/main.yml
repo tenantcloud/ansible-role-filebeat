@@ -14,8 +14,7 @@
     state: stopped
 - name: Install Filebeat
   apt:
-    name: filebeat
-    state: "{{ beat_version }}"
+    name: "filebeat={{ release_version }}"
     enabled: true
   notify:
     - Stop filebeat
