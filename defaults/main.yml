@@ -1,4 +1,4 @@
 ---
-elasticsearch_version: "6.x"
+elasticsearch_version: "7.x"
 elasic_repo: "deb https://artifacts.elastic.co/packages"
-beat_version: "latest"
+release_version: "7.5.2"
