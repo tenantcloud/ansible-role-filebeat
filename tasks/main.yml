@@ -13,7 +13,7 @@
 - name: Stop filebeat
   service:
     name: filebeat
-    state: stoped
+    state: stopped
 
 - name: Install Filebeat
   apt:
