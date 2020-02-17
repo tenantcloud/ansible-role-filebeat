@@ -14,11 +14,11 @@
   service:
     name: filebeat
     state: stopped
+  ignore_errors: true
 
 - name: Install Filebeat
   apt:
     name: "filebeat={{ release_version }}"
-    enabled: true
   notify:
     - Stop filebeat
 
