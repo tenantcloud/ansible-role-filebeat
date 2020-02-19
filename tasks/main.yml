@@ -43,6 +43,7 @@
     - socket.yml
     - syslog.yml
     - horizon.yml
+    - sns.yml
 
 - name: Create crt directory
   file:
