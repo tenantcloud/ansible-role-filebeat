@@ -135,14 +135,13 @@ processors:
 
 #================================ Logging =====================================
 
-# Sets log level. The default log level is info.
-# Available log levels are: error, warning, info, debug
-#logging.level: debug
-
-# At debug level, you can selectively enable logging only for some components.
-# To enable all selectors use ["*"]. Examples of other selectors are "beat",
-# "publish", "service".
-#logging.selectors: ["*"]
+logging.level: error
+logging.to_syslog: false
+logging.to_files: true
+logging.files.path: "/var/log/filebeat"
+logging.files.name: filebeat
+logging.files.keepfiles: 7
+logging.files.permissions: 0644
 
 #============================== Xpack Monitoring ===============================
 # filebeat can export internal metrics to a central Elasticsearch monitoring
