@@ -33,6 +33,15 @@
     src: 'etc/filebeat/filebeat.yml.tpl'
     dest: '/etc/filebeat/filebeat.yml'
 
+- name: Change logging configuration
+  lineinfile:
+    path: "{{ item.path }}"
+    regexp: "{{ item.regexp }}"
+    line: "{{ item.line }}"
+  loop:
+    - { path: '{{ filebeat_daemon_file }}', regexp: '^Environment="BEAT_LOG', line: '#Environment="BEAT_LOG_OPTS=-e"' }
+    - { path: '{{ filebeat_daemon_file }}', regexp: '^ExecStart=', line: 'ExecStart=/usr/share/filebeat/bin/filebeat $BEAT_CONFIG_OPTS $BEAT_PATH_OPTS' }
+
 - name: Add configuration files
   template:
     src: 'etc/filebeat/configs/{{ item }}.tpl'
