@@ -5,7 +5,7 @@
   fields:
     type: php_fpm
   fields_under_root: true
-  multiline.pattern: '\[[\d]{4}'
+  multiline.pattern: '\[[\d]{2}'
   multiline.negate: true
   multiline.match: after
   scan_frequency: 60s
