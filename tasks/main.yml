@@ -53,6 +53,7 @@
     - syslog.yml
     - horizon.yml
     - sns.yml
+    - php.yml
 
 - name: Create crt directory
   file:
