@@ -1,4 +1,15 @@
 ---
+- name: Create filebeat configs directory
+  file:
+    path: '/usr/share/filebeat/configs'
+    state: directory
+    mode: 0755
+
+- name: Add filebeat configuration file
+  template:
+    src: 'etc/filebeat/filebeat.yml.tpl'
+    dest: '/usr/share/filebeat/filebeat.yml'
+
 - name: Add configuration files
   template:
     src: 'etc/filebeat/configs/{{ item }}.tpl'
