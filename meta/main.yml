@@ -23,7 +23,7 @@ galaxy_info:
         - stretch
     - name: Alpine
       versions:
-        - 3
+        - any
 
   galaxy_tags:
     - filebeat
