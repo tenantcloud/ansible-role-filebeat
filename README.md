@@ -25,6 +25,7 @@ Example Playbook
   - hosts: localhost
     vars:
       crt_file_src: logstash.crt
+      elk_url: localhost
     become: yes
     roles:
       - tenantcloud.filebeat
