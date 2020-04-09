@@ -1,4 +1,14 @@
 ---
+- name: Add filebeat repository
+  lineinfile:
+    path: /etc/apk/repositories
+    line: http://dl-cdn.alpinelinux.org/alpine/edge/testing
+
+- name: Install filebeat
+  apk:
+    name: "filebeat={{ release_version }}-r0"
+    update_cache: yes
+
 - name: Create filebeat configs directory
   file:
     path: '/usr/share/filebeat/configs'
