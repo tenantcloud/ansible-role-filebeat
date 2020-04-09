@@ -4,6 +4,7 @@
     - /home/forge/*/storage/logs/laravel*
     - /var/www/*/storage/logs/laravel*
     - /var/www/html/*/storage/logs/laravel*
+    - /app/storage/logs/laravel*
   fields:
     type: laravel
   fields_under_root: true
