@@ -21,6 +21,9 @@ galaxy_info:
       versions:
         - jessie
         - stretch
+    - name: Alpine
+      versions:
+        - 3
 
   galaxy_tags:
     - filebeat
