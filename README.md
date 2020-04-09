@@ -1,4 +1,4 @@
-tenantcloud.ansible_role_filebeat
+tenantcloud.filebeat
 =========
 
 Ansible role for install and setup filebeat. This role include in default terraform scenario for auto-deploy new server.
@@ -6,7 +6,7 @@ Ansible role for install and setup filebeat. This role include in default terraf
 Requirements
 ------------
 
-Certificate from tenantcloud.ansible_role_auth_elk role must be generated and upload on S3 bucket.
+Certificate from tenantcloud.auth_elk role must be generated and upload on S3 bucket.
 
 Role Variables
 --------------
@@ -27,7 +27,7 @@ Example Playbook
       crt_file_src: logstash.crt
     become: yes
     roles:
-      - tenantcloud.ansible_role_filebeat
+      - tenantcloud.filebeat
 ```
 
 License

@@ -1,0 +1,24 @@
+---
+- name: Add configuration files
+  template:
+    src: 'etc/filebeat/configs/{{ item }}.tpl'
+    dest: '/usr/share/filebeat/configs/{{ item }}'
+  loop:
+    - laravel.yml
+    - nginx.yml
+    - socket.yml
+    - syslog.yml
+    - horizon.yml
+    - sns.yml
+    - php.yml
+
+- name: Create crt directory
+  file:
+    path: '/usr/share/filebeat/ssl'
+    state: directory
+    mode: 0755
+
+- name: Add certificate
+  copy:
+    src: '{{ crt_file_src }}'
+    dest: '/usr/share/filebeat/ssl/logstash.crt'
