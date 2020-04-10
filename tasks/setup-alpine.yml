@@ -1,13 +1,22 @@
 ---
-- name: Add filebeat repository
-  lineinfile:
-    path: /etc/apk/repositories
-    line: http://dl-cdn.alpinelinux.org/alpine/edge/testing
+- name: Install gnu-tar
+  apk:
+    name: tar
+    update_cache: yes
+
+- name: Download filebeat
+  get_url:
+    url: 'https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-{{ release_version }}-linux-x86_64.tar.gz'
+    dest: '/tmp/filebeat-{{ release_version }}-linux-x86_64.tar.gz'
+    mode: '0644'
 
 - name: Install filebeat
-  apk:
-    name: "filebeat={{ release_version }}-r0"
-    update_cache: yes
+  unarchive:
+    src: '/tmp/filebeat-{{ release_version }}-linux-x86_64.tar.gz'
+    dest: '/usr/share'
+    extra_opts:
+    - --transform
+    - 's/filebeat-{{ release_version }}-linux-x86_64/filebeat/'
 
 - name: Create filebeat configs directory
   file:
