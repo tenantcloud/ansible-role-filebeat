@@ -117,8 +117,14 @@ output.logstash:
 
   # Optional SSL. By default is off.
   # List of root certificates for HTTPS server verifications
+{% if ansible_distribution == 'Ubuntu' %}
   ssl.certificate_authorities: ["/etc/filebeat/ssl/logstash.crt"]
 
+{% endif %}
+{% if ansible_distribution == 'Alpine' %}
+  ssl.certificate_authorities: ["/usr/share/filebeat/ssl/logstash.crt"]
+
+{% endif %}
   # Certificate for SSL client authentication
   #ssl.certificate: "/etc/pki/client/cert.pem"
 
