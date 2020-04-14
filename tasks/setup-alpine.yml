@@ -1,7 +1,9 @@
 ---
-- name: Install gnu-tar
+- name: Install packages
   apk:
-    name: tar
+    name:
+      - tar
+      - libc6-compat
     update_cache: yes
 
 - name: Download filebeat
