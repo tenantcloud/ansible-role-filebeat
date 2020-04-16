@@ -5,6 +5,7 @@
     - /var/www/html/*/storage/logs/emails*.log
   fields:
     type: horizon_email
+    host-name: {{ inventory_hostname }}
   fields_under_root: true
   multiline.pattern: '\[[\d]{4}'
   multiline.negate: true
@@ -18,6 +19,7 @@
     - /var/www/html/*/storage/logs/queue*.log
   fields:
     type: horizon_queue
+    host-name: {{ inventory_hostname }}
   fields_under_root: true
   multiline.pattern: '\[[\d]{4}'
   multiline.negate: true

@@ -5,6 +5,7 @@
     - /var/log/php7/*fpm.log
   fields:
     type: php_fpm
+    host-name: {{ inventory_hostname }}
   fields_under_root: true
   multiline.pattern: '\[[\d]{2}'
   multiline.negate: true
