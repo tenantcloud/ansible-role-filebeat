@@ -7,6 +7,7 @@
     - /app/storage/logs/laravel*
   fields:
     type: laravel
+    host-name: {{ inventory_hostname }}
   fields_under_root: true
   multiline.pattern: '\[[\d]{4}'
   multiline.negate: true
