@@ -1,0 +1,12 @@
+- type: log
+  enabled: true
+  paths:
+    - /var/www/html/*/storage/logs/global_search_statistic*.log
+    - /var/www/*/storage/logs/global_search_statistic*.log
+  fields:
+    type: gss
+  fields_under_root: true
+  multiline.pattern: '\[[\d]{4}'
+  multiline.negate: true
+  multiline.match: after
+  scan_frequency: 60s
