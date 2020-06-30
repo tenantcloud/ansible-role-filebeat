@@ -5,12 +5,16 @@
       - tar
       - libc6-compat
     update_cache: yes
+  tags:
+    - packages
 
 - name: Download filebeat
   get_url:
     url: 'https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-{{ release_version }}-linux-x86_64.tar.gz'
     dest: '/tmp/filebeat-{{ release_version }}-linux-x86_64.tar.gz'
     mode: '0644'
+  tags:
+    - packages
 
 - name: Install filebeat
   unarchive:
@@ -19,17 +23,30 @@
     extra_opts:
     - --transform
     - 's/filebeat-{{ release_version }}-linux-x86_64/filebeat/'
+  tags:
+    - packages
+
+- name: Delete filebeat archive installer
+  file:
+    path: '/tmp/filebeat-{{ release_version }}-linux-x86_64.tar.gz'
+    state: absent
+  tags:
+    - packages
 
 - name: Create filebeat configs directory
   file:
     path: '/usr/share/filebeat/configs'
     state: directory
     mode: 0755
+  tags:
+    - configuration
 
 - name: Add filebeat configuration file
   template:
     src: 'etc/filebeat/filebeat.yml.tpl'
     dest: '/usr/share/filebeat/filebeat.yml'
+  tags:
+    - configuration
 
 - name: Add configuration files
   template:
@@ -43,14 +60,20 @@
     - horizon.yml
     - sns.yml
     - php.yml
+  tags:
+    - configuration
 
 - name: Create crt directory
   file:
     path: '/usr/share/filebeat/ssl'
     state: directory
     mode: 0755
+  tags:
+    - configuration
 
 - name: Add certificate
   copy:
     src: '{{ crt_file_src }}'
     dest: '/usr/share/filebeat/ssl/logstash.crt'
+  tags:
+    - configuration
