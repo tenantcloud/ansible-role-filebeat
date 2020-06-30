@@ -6,7 +6,7 @@
       - libc6-compat
     update_cache: yes
   tags:
-    - configuration
+    - packages
 
 - name: Download filebeat
   get_url:
