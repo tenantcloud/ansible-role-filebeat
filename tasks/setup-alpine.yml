@@ -54,3 +54,9 @@
   copy:
     src: '{{ crt_file_src }}'
     dest: '/usr/share/filebeat/ssl/logstash.crt'
+
+- name: Remove packages
+  apk:
+    name:
+      - tar
+    state: absent
