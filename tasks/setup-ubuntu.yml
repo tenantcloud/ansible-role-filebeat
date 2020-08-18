@@ -22,6 +22,11 @@
   notify:
     - Stop filebeat
 
+- name: Enable filebeat
+  service:
+    name: filebeat
+    enabled: true
+
 - name: Create filebeat configs directory
   file:
     path: '/etc/filebeat/configs'
