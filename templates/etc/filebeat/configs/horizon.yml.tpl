@@ -29,7 +29,7 @@
 - type: log
   enabled: true
   paths:
-    - /var/www/html/*/storage/logs/queue_*.log
+    - /var/www/html/*/storage/logs/queue_job_exceptions*.log
   fields:
     type:  job_exceptions
     host-name: {{ inventory_hostname }}
