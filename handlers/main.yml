@@ -9,8 +9,10 @@
   service:
     name: filebeat
     state: started
+    enabled: true
 
 - name: Restart filebeat
   service:
     name: filebeat
     state: restarted
+    daemon_reload: true

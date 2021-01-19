@@ -1,3 +1,6 @@
+
+![Lint Ansible Roles](https://github.com/tenantcloud/ansible-role-filebeat/workflows/Lint%20Ansible%20Roles/badge.svg?branch-master)
+
 tenantcloud.filebeat
 =========
 

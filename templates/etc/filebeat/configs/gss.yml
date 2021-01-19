@@ -1,4 +1,4 @@
-- type: log
+- type: log   # yamllint disable-line rule:document-start
   enabled: true
   paths:
     - /var/www/html/*/storage/logs/global_search_statistic*.log
