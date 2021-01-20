@@ -37,6 +37,7 @@
   template:
     src: 'etc/filebeat/filebeat.yml.tpl'
     dest: '/etc/filebeat/filebeat.yml'
+    mode: 0600
 
 - name: Change logging configuration
   lineinfile:
@@ -44,13 +45,19 @@
     regexp: "{{ item.regexp }}"
     line: "{{ item.line }}"
   loop:
-    - { path: '{{ filebeat_daemon_file }}', regexp: '^Environment="BEAT_LOG', line: '#Environment="BEAT_LOG_OPTS=-e"' }
-    - { path: '{{ filebeat_daemon_file }}', regexp: '^ExecStart=', line: 'ExecStart=/usr/share/filebeat/bin/filebeat $BEAT_CONFIG_OPTS $BEAT_PATH_OPTS' }
+    - {path: '{{ filebeat_daemon_file }}',
+       regexp: '^Environment="BEAT_LOG',
+       line: '#Environment="BEAT_LOG_OPTS=-e"'}
+    - {path: '{{ filebeat_daemon_file }}',
+       regexp: '^ExecStart=',
+       line: 'ExecStart=/usr/share/filebeat/bin/filebeat
+       $BEAT_CONFIG_OPTS $BEAT_PATH_OPTS'}
 
 - name: Add configuration files
   template:
     src: 'etc/filebeat/configs/{{ item }}.tpl'
     dest: '/etc/filebeat/configs/{{ item }}'
+    mode: 0600
   loop:
     - laravel.yml
     - nginx.yml
@@ -70,5 +77,7 @@
   copy:
     src: '{{ crt_file_src }}'
     dest: '/etc/filebeat/ssl/logstash.crt'
+    remote_src: true
+    mode: 0600
   notify:
     - Restart filebeat

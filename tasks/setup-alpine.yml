@@ -4,13 +4,14 @@
     name:
       - tar
       - libc6-compat
-    update_cache: yes
+    update_cache: true
   tags:
     - packages
 
 - name: Download filebeat
   get_url:
-    url: 'https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-{{ release_version }}-linux-x86_64.tar.gz'
+    url: "https://artifacts.elastic.co/downloads/\
+    beats/filebeat/filebeat-{{ release_version }}-linux-x86_64.tar.gz"
     dest: '/tmp/filebeat-{{ release_version }}-linux-x86_64.tar.gz'
     mode: '0644'
   tags:
@@ -21,8 +22,8 @@
     src: '/tmp/filebeat-{{ release_version }}-linux-x86_64.tar.gz'
     dest: '/usr/share'
     extra_opts:
-    - --transform
-    - 's/filebeat-{{ release_version }}-linux-x86_64/filebeat/'
+      - --transform
+      - 's/filebeat-{{ release_version }}-linux-x86_64/filebeat/'
   tags:
     - packages
 
@@ -45,6 +46,7 @@
   template:
     src: 'etc/filebeat/filebeat.yml.tpl'
     dest: '/usr/share/filebeat/filebeat.yml'
+    mode: 0600
   tags:
     - configuration
 
@@ -52,6 +54,7 @@
   template:
     src: 'etc/filebeat/configs/{{ item }}.tpl'
     dest: '/usr/share/filebeat/configs/{{ item }}'
+    mode: 0600
   loop:
     - laravel.yml
     - nginx.yml
@@ -75,5 +78,6 @@
   copy:
     src: '{{ crt_file_src }}'
     dest: '/usr/share/filebeat/ssl/logstash.crt'
+    mode: 0600
   tags:
     - configuration
