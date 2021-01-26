@@ -57,7 +57,7 @@
   template:
     src: 'etc/filebeat/configs/{{ item }}.tpl'
     dest: '/etc/filebeat/configs/{{ item }}'
-    mode: 0600
+    mode: 0644
   loop:
     - laravel.yml
     - nginx.yml
@@ -78,6 +78,6 @@
     src: '{{ crt_file_src }}'
     dest: '/etc/filebeat/ssl/logstash.crt'
     remote_src: true
-    mode: 0600
+    mode: 0644
   notify:
     - Restart filebeat
