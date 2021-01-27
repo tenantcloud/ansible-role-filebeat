@@ -1,9 +1,9 @@
 - type: log
   enabled: true
   paths:
-    - /home/forge/*/storage/logs/sns*
     - /var/www/*/storage/logs/sns*
     - /var/www/html/*/storage/logs/sns*
+    - /app/storage/logs/sns*
   fields:
     type: sns
     host-name: {{ inventory_hostname }}
