@@ -1,8 +1,8 @@
 - type: log
   enabled: true
   paths:
-    - /home/forge/*/storage/logs/emails*.log
     - /var/www/html/*/storage/logs/emails*.log
+    - /app/storage/logs/emails*.log
   fields:
     type: horizon_email
     host-name: {{ inventory_hostname }}
@@ -15,8 +15,8 @@
 - type: log
   enabled: true
   paths:
-    - /home/forge/*/storage/logs/queue-*.log
     - /var/www/html/*/storage/logs/queue-*.log
+    - /app/storage/logs/queue-*.log
   fields:
     type: horizon_queue
     host-name: {{ inventory_hostname }}
@@ -30,6 +30,7 @@
   enabled: true
   paths:
     - /var/www/html/*/storage/logs/queue_job_exceptions*.log
+    - /app/storage/logs/queue_job_exceptions*.log
   fields:
     type:  job_exceptions
     host-name: {{ inventory_hostname }}
