@@ -6,6 +6,7 @@
   fields:
     type: horizon_email
     host-name: {{ inventory_hostname }}
+    app-type: {{ docker_app_type }}
   fields_under_root: true
   multiline.pattern: '\[[\d]{4}'
   multiline.negate: true
@@ -20,6 +21,7 @@
   fields:
     type: horizon_queue
     host-name: {{ inventory_hostname }}
+    app-type: {{ docker_app_type }}
   fields_under_root: true
   multiline.pattern: '\[[\d]{4}'
   multiline.negate: true
@@ -34,6 +36,7 @@
   fields:
     type:  job_exceptions
     host-name: {{ inventory_hostname }}
+    app-type: {{ docker_app_type }}
   fields_under_root: true
   multiline.pattern: '\[[\d]{4}'
   multiline.negate: true
