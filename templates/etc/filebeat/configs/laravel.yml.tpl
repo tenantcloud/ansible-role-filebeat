@@ -8,6 +8,7 @@
   fields:
     type: laravel
     host-name: {{ inventory_hostname }}
+    app-type: {{ docker_app_type }}
   fields_under_root: true
   multiline.pattern: '\[[\d]{4}'
   multiline.negate: true
