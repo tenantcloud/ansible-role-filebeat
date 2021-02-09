@@ -63,6 +63,7 @@
     - horizon.yml
     - sns.yml
     - php.yml
+    - gss.yml
   tags:
     - configuration
 
