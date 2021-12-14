@@ -1,8 +1,8 @@
 - type: log
   enabled: true
   paths:
-    - /var/log/php7.1-fpm.log
     - /var/log/php7/*fpm.log
+    - /var/log/php7/error.log
   fields:
     type: php_fpm
     host-name: {{ inventory_hostname }}
