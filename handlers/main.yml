@@ -1,18 +1,9 @@
 ---
+- import_tasks: setup-ubuntu.yml
+  when: ansible_distribution == 'Ubuntu'
 
-- name: Stop filebeat
-  service:
-    name: filebeat
-    state: stopped
+- import_tasks: setup-debian.yml
+  when: ansible_distribution == 'Debian'
 
-- name: Start filebeat
-  service:
-    name: filebeat
-    state: started
-    enabled: true
-
-- name: Restart filebeat
-  service:
-    name: filebeat
-    state: restarted
-    daemon_reload: true
+- import_tasks: setup-alpine.yml
+  when: ansible_distribution == 'Alpine'
