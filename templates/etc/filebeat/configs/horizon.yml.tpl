@@ -17,7 +17,7 @@
   enabled: true
   paths:
     - /var/www/html/*/storage/logs/queue-*.log
-    - /app/storage/logs/queue-*.log
+    - /app/storage/logs/queue_jobs-*.log
   fields:
     type: horizon_queue
     host-name: {{ inventory_hostname }}
