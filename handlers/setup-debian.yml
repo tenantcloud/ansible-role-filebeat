@@ -16,4 +16,3 @@
     name: filebeat
     state: stopped
     enabled: false
-
