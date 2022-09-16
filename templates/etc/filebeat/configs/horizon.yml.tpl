@@ -34,7 +34,7 @@
     - /var/www/html/*/storage/logs/queue_job_exceptions*.log
     - /app/storage/logs/queue_job_exceptions*.log
   fields:
-    type:  job_exceptions
+    type: job_exceptions
     host-name: {{ inventory_hostname }}
     app-type: {{ docker_app_type }}
   fields_under_root: true
@@ -42,4 +42,16 @@
   multiline.negate: true
   multiline.match: after
   scan_frequency: 60s
-
+- type: log
+  enabled: true
+  paths:
+    - /app/storage/logs/notifications-*.log
+  fields:
+    type:  notifications
+    host-name: {{ inventory_hostname }}
+    app-type: {{ docker_app_type }}
+  fields_under_root: true
+  multiline.pattern: '\[[\d]{4}'
+  multiline.negate: true
+  multiline.match: after
+  scan_frequency: 60s
