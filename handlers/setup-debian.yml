@@ -9,10 +9,11 @@
   service:
     name: filebeat
     state: stopped
-    enabled: no
+    enabled: false
 
 - name: Restart filebeat
   service:
     name: filebeat
     state: stopped
-    enabled: no
+    enabled: false
+
