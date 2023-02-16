@@ -64,6 +64,7 @@
     - sns.yml
     - php.yml
     - gss.yml
+    - octane.yml
   tags:
     - configuration
 
