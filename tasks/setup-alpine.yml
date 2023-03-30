@@ -65,6 +65,7 @@
     - php.yml
     - gss.yml
     - octane.yml
+    - workload.yml
   tags:
     - configuration
 
