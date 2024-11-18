@@ -165,4 +165,5 @@ logging.files.permissions: 0644
 #xpack.monitoring.elasticsearch:
 setup.ilm.enabled: false
 ilm.enabled: false
+logging.metrics.enabled: false
 
