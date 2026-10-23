@@ -66,6 +66,7 @@
     - gss.yml
     - octane.yml
     - workload.yml
+    - octane_metrics.yml
   tags:
     - configuration
 
